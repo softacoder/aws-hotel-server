@@ -1,4 +1,4 @@
-# third version
+# fourth version
 on: [push]
 branches:
   - main
@@ -41,9 +41,56 @@ jobs:
           host: ${{ secrets.EC2_HOST }}
           username: ${{ secrets.SSH_USERNAME }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
-      script: |
+          script: |
             cd /aws-hotel-server
             pm2 start "server.js"
+
+# third version
+# on: [push]
+# branches:
+#   - main
+
+# jobs:
+#   deploy:
+#     runs-on: ubuntu-latest
+
+#     steps:
+#       - name: Checkout code
+#         uses: actions/checkout@v2
+
+#       # - name: Configure AWS credentials
+#       #   run: |
+#       #     echo "[default]
+#       #     aws_access_key_id=${{ secrets.AWS_ACCESS_KEY_ID }}
+#       #     aws_secret_access_key=${{ secrets.AWS_SECRET_ACCESS_KEY }}" > ~/.aws/credentials
+
+#       - name: Setup Node.js
+#         uses: actions/setup-node@v2
+#         with:
+#           node-version: 18
+
+#       - name: Install Dependencies
+#         run: |
+#           npm ci
+
+#       - name: EC2 SCP > Copy / to /aws-hotel-server/
+#         uses: appleboy/scp-action@v0.1.4
+#         with:
+#           host: ${{ secrets.EC2_HOST }}
+#           username: ${{ secrets.SSH_USERNAME }}
+#           key: ${{ secrets.SSH_PRIVATE_KEY }}
+#           source: "*"
+#           target: "aws-hotel-server/"
+
+#       - name: EC2 SSH > Start PM2 process
+#         uses: appleboy/ssh-action@v1.0.0
+#         with:
+#           host: ${{ secrets.EC2_HOST }}
+#           username: ${{ secrets.SSH_USERNAME }}
+#           key: ${{ secrets.SSH_PRIVATE_KEY }}
+#       script: |
+#             cd /aws-hotel-server
+#             pm2 start "server.js"
 
 # second version
 # on: [push]
