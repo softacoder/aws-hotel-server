@@ -1,10 +1,10 @@
 # Version 1
 # Use the official Node.js runtime as the base image
-# FROM node:18-alpine
-FROM aws-hotel-server-docker-image
+FROM node:18-alpine
+
 # Set the working directory inside the container
-# WORKDIR /AWS-HOTEL-SERVER
-WORKDIR /aws-hotel-server-docker-container
+WORKDIR /AWS-HOTEL-SERVER
+
 # Copy package.json and package-lock.json to the container
 COPY package*.json ./
 
