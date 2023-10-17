@@ -26,7 +26,7 @@ jobs:
       - name: Setup Docker
         uses: actions/setup-docker@v4
         with:
-          dockerfile: .softacoder/aws-hotel-server/Dockerfile
+          dockerfile: .aws-hotel-server/Dockerfile
 
       - name: Build and Push Docker Image
         run: docker build -t softa67/awshotelbackend:latest . && docker push softa67/awshotelbackend:latest
