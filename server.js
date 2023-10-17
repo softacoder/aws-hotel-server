@@ -1,4 +1,4 @@
-// update16. This code works on level 1-5 in glitch on everything
+// update16. This code works on level 1-5 in glitch on everything.
 const express = require("express");
 const cors = require("cors");
 const moment = require("moment");
