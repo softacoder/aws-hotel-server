@@ -119,7 +119,7 @@ app.delete("/bookings/:id", (req, res) => {
 const listener = app.listen(port, function () {
   console.log("Your app is listening on port " + listener.address().port);
 });
-
+// testing
 // scp -i "AWS-EC2-key-pair.pem" /Users/jansofta/Documents/GitHub/aws-hotel-server/* ec2-user@ec2-18-168-197-240.eu-west-2.compute.amazonaws.com:path/
 
 // ssh -i "AWS-EC2-key-pair.pem" ec2-user@ec2-18-168-197-240.eu-west-2.compute.amazonaws.com
