@@ -33,6 +33,7 @@ jobs:
         run: |
           docker buildx create --use
           docker build -t softa67/awshotelbackend:latest .
+          docker login -u softa67 -p ${{ secrets.DOCKER_ACCESS_TOKEN }}
           docker push softa67/awshotelbackend:latest
 
       - name: EC2 SCP > Copy / to /aws-hotel-server/
