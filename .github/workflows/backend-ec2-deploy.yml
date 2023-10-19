@@ -36,14 +36,14 @@ jobs:
           docker login -u softa67 -p ${{ secrets.DOCKER_ACCESS_TOKEN }}
           docker push softa67/awshotelbackend:latest
 
-      # - name: EC2 SCP > Copy / to /aws-hotel-server/
-      #   uses: appleboy/scp-action@v0.1.4
-      #   with:
-      #     host: ${{ secrets.EC2_HOST }}
-      #     username: ${{ secrets.SSH_USERNAME }}
-      #     key: ${{ secrets.SSH_PRIVATE_KEY }}
-      #     source: "*"
-      #     target: "aws-hotel-server/"
+      - name: EC2 SCP > Copy / to /aws-hotel-server/
+        uses: appleboy/scp-action@v0.1.4
+        with:
+          host: ${{ secrets.EC2_HOST }}
+          username: ${{ secrets.SSH_USERNAME }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          source: "*"
+          target: "aws-hotel-server/"
 
       - name: EC2 SSH > Start PM2 process
         uses: appleboy/ssh-action@v1.0.0
@@ -52,8 +52,11 @@ jobs:
           username: ${{ secrets.SSH_USERNAME }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
-            docker login -u softa67 -p ${{ secrets.DOCKER_ACCESS_TOKEN }}
-            docker pull softa67/awshotelbackend:latest
+            cd /aws-hotel-server
+            pm2 start "server.js"
+          # script: |
+          #   docker login -u softa67 -p ${{ secrets.DOCKER_ACCESS_TOKEN }}
+          #   docker pull softa67/awshotelbackend:latest
 
 # seventh version
 # name: Deploy Backend
