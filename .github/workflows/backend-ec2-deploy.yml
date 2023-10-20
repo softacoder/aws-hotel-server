@@ -51,12 +51,13 @@ jobs:
           host: ${{ secrets.EC2_HOST }}
           username: ${{ secrets.SSH_USERNAME }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
-          script: |
-            cd /aws-hotel-server
-            pm2 start "server.js"
+            script: |
+              docker login -u softa67 -p ${{ secrets.DOCKER_ACCESS_TOKEN }}
+              docker pull softa67/awshotelbackend:latest
           # script: |
-          #   docker login -u softa67 -p ${{ secrets.DOCKER_ACCESS_TOKEN }}
-          #   docker pull softa67/awshotelbackend:latest
+          #   cd /aws-hotel-server
+          #   pm2 start "server.js"
+          
 
 # seventh version
 # name: Deploy Backend
