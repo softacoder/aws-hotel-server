@@ -55,7 +55,8 @@ jobs:
             docker login -u softa67 -p ${{ secrets.DOCKER_ACCESS_TOKEN }}
             docker pull softa67/awshotelbackend:latest
             docker stop $(docker ps -a -q)
-            docker run --rm -d -p 80:3000 softa67/awshotelbackend:latest
+            docker run --rm -d -p 3000:3000 softa67/awshotelbackend:latest
+            docker run --rm -d -p 80:3000 softa67/awshotelfrontend:latest
 
 # version 8
 # name: Deploy Backend
